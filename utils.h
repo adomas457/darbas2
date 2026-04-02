@@ -31,22 +31,7 @@ Container readFile(const std::string &filename) {
     while (std::getline(file, line)) {
         std::stringstream ss(line);
         Student s;
-
-        ss >> s.name >> s.surname;
-        
-        int grade;
-        std::vector<int> hm;
-        while (ss >> grade) {
-            hm.push_back(grade);
-        }
-
-        s.exam = hm.back();
-        hm.pop_back();
-        s.homework = hm;
-
-        s.mean = calculateMean(s.homework, s.exam);
-        s.median = calculateMedian(s.homework, s.exam);
-
+        s.readStudent(ss);
         students.push_back(s);
     }
 
@@ -77,7 +62,7 @@ void splitStudent(Container &stud, const std::string &geri, const std::string &b
     Container geriStud, blogiStud;
 
     for (const auto &s : stud) {
-        if (s.mean >= 5.0) {
+        if (s.getMean() >= 5.0) {
             geriStud.push_back(s);
         }
         else {
@@ -98,8 +83,8 @@ void splitStudent(Container &stud, const std::string &geri, const std::string &b
     fileGeri << std::left << std::setw(25) << "Vardas" << std::left << std::setw(25) << "Pavarde" << std::left << std::setw(25) << "Galutinis (Vid.)" << 
     "Galutinis (Med.)" << '\n';
     for (const auto &s : geriStud) {
-        fileGeri << std::left << std::setw(25) << s.name << std::left << std::setw(25) << s.surname << std::left << std::setw(25) 
-        << std::fixed << std::setprecision(2) << s.mean << std::fixed << std::setprecision(2) << s.median << '\n';
+        fileGeri << std::left << std::setw(25) << s.getName() << std::left << std::setw(25) << s.getSurname() << std::left << std::setw(25) 
+        << std::fixed << std::setprecision(2) << s.getMean() << std::fixed << std::setprecision(2) << s.getMedian() << '\n';
     }
 
 
@@ -107,8 +92,8 @@ void splitStudent(Container &stud, const std::string &geri, const std::string &b
     fileBlogi << std::left << std::setw(25) << "Vardas" << std::left << std::setw(25) << "Pavarde" << std::left << std::setw(25) << "Galutinis (Vid.)" << 
     "Galutinis (Med.)" << '\n';
     for (const auto &s : blogiStud) {
-        fileBlogi << std::left << std::setw(25) << s.name << std::left << std::setw(25) << s.surname << std::left << std::setw(25) 
-        << std::fixed << std::setprecision(2) << s.mean << std::fixed << std::setprecision(2) << s.median << '\n';
+        fileBlogi << std::left << std::setw(25) << s.getName() << std::left << std::setw(25) << s.getSurname() << std::left << std::setw(25) 
+        << std::fixed << std::setprecision(2) << s.getMean() << std::fixed << std::setprecision(2) << s.getMedian() << '\n';
     }
 
     end = std::chrono::high_resolution_clock::now();
@@ -139,7 +124,7 @@ void splitStudent2(Container &stud, const std::string &geri, const std::string &
     
     auto it = stud.begin();
     while (it != stud.end()) {
-        if (it->mean < 5.0) {
+        if (it->getMean() < 5.0) {
             blogiStud.push_back(*it);
             it = stud.erase(it);
         } else {
@@ -180,7 +165,7 @@ void splitStudent3(Container &stud, const std::string &geri, const std::string &
     if constexpr (!std::is_same_v<Container, std::vector<Student>>) {
         auto it = stud.begin();
         while (it != stud.end()) {
-            if (it->mean < 5.0) {
+            if (it->getMean() < 5.0) {
                 blogiStud.push_back(*it);
                 it = stud.erase(it);
             } else {
@@ -189,7 +174,7 @@ void splitStudent3(Container &stud, const std::string &geri, const std::string &
         }
         
     } else {
-        auto splitPoint = std::partition(stud.begin(), stud.end(), [](const Student &s) { return s.mean >= 5.0; });
+        auto splitPoint = std::partition(stud.begin(), stud.end(), [](const Student &s) { return s.getMean() >= 5.0; });
 
         blogiStud = Container(splitPoint, stud.end()); 
         stud.erase(splitPoint, stud.end());
