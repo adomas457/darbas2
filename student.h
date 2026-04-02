@@ -1,19 +1,40 @@
-#ifndef STUDENT_H
-#define STUDENT_H
+#ifndef STUDENTAS_H
+#define STUDENTAS_H
 
 #include <string>
 #include <vector>
+#include <iostream>
+#include <algorithm>
 
-struct Student {
+class Student {
+private:
     std::string name;
     std::string surname;
     std::vector<int> homework;
     int exam;
     double mean;
     double median;
+
+public:
+    
+    Student() : exam(0), mean(0), median(0) { }
+
+    
+    Student(std::istream& is) {
+        readStudent(is);
+    }
+
+    std::string getName() const { return name; }
+    std::string getSurname() const { return surname; }
+    int getExam() const { return exam; }
+    double getMean() const { return mean; }
+    double getMedian() const { return median; }
+    const std::vector<int>& getHomework() const { return homework; }
+
+    std::istream& readStudent(std::istream& is);
 };
 
-double calculateMean(const std::vector<int> &hm, int exam);
-double calculateMedian(std::vector<int> hm, int);
+double calculateMean(const std::vector<int>& hm, int exam);
+double calculateMedian(std::vector<int> hm, int exam);
 
 #endif
