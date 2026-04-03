@@ -37,12 +37,7 @@ int main() {
             int pasirinkimas = getInt("Strategijos nr.: ", 1, 3);
             try {
 
-                auto start = std::chrono::high_resolution_clock::now();
-
                 students = readFile<Container>("studentai" + std::to_string(test) + ".txt");
-
-                auto end = std::chrono::high_resolution_clock::now();
-                std::cout << "Failo nuskaitymo laikas: " << std::chrono::duration<double>(end - start).count() << " s\n" << std::endl;
 
                 if (pasirinkimas == 1) {
                     splitStudent<Container>(students, "geri" + std::to_string(test) + ".txt", "blogi"+ std::to_string(test) + ".txt");
