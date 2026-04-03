@@ -67,10 +67,10 @@ void generateFile(const std::string &filename, int n, int nd) {
 
 bool rusiuoti(const Student& s1, const Student& s2) {
     switch (rusiavimas) {
-        case 1: return s1.name < s2.name;
-        case 2: return s1.surname < s2.surname;
-        case 3: return s1.mean < s2.mean;
-        case 4: return s1.median < s2.median;
+        case 1: return s1.getName() < s2.getName();
+        case 2: return s1.getSurname() < s2.getSurname();
+        case 3: return s1.getMean() < s2.getMean();
+        case 4: return s1.getMedian() < s2.getMedian();
     }
     return false;
 }

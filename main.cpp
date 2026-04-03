@@ -11,9 +11,9 @@
 #include <list>
 
 int main() {
-    //using Container = std::vector<Student>;
+    using Container = std::vector<Student>;
     //using Container = std::deque<Student>;
-    using Container = std::list<Student>;
+    //using Container = std::list<Student>;
 
     Container students;
     std::srand(std::time(nullptr));
