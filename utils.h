@@ -95,7 +95,6 @@ void splitStudent(Container &stud, const std::string &geri, const std::string &b
 template<typename Container>
 void splitStudent2(Container &stud, const std::string &geri, const std::string &blogi) {
 
-    auto start = std::chrono::high_resolution_clock::now();
 
     if constexpr (std::is_same_v<Container, std::list<Student>>) {
         stud.sort(rusiuoti);
@@ -103,10 +102,8 @@ void splitStudent2(Container &stud, const std::string &geri, const std::string &
         std::sort(stud.begin(), stud.end(), rusiuoti);
     }
 
-    auto end = std::chrono::high_resolution_clock::now();
-    std::cout << "Studentų rūšiavimo pagal did. tvarka laikas: " << std::chrono::duration<double>(end - start).count() << " s\n" << std::endl;
 
-    start = std::chrono::high_resolution_clock::now();
+    auto start = std::chrono::high_resolution_clock::now();
 
     Container blogiStud;
 
@@ -122,7 +119,7 @@ void splitStudent2(Container &stud, const std::string &geri, const std::string &
     }
     
 
-    end = std::chrono::high_resolution_clock::now();
+    auto end = std::chrono::high_resolution_clock::now();
     std::cout << "Studentų skirstymo į dvi grupes laikas: " << std::chrono::duration<double>(end - start).count() << " s\n" << std::endl;
 
 }
@@ -131,23 +128,19 @@ void splitStudent2(Container &stud, const std::string &geri, const std::string &
 template<typename Container>
 double splitStudent3(Container &stud, const std::string &geri, const std::string &blogi) {
 
-    auto start = std::chrono::high_resolution_clock::now();
-    auto end = start;
 
     if constexpr (std::is_same_v<Container, std::list<Student>>) {
-        start = std::chrono::high_resolution_clock::now();
+        
         stud.sort(rusiuoti);
-        end = std::chrono::high_resolution_clock::now();
-        //std::cout << "Studentų rūšiavimo pagal did. tvarka laikas: " << std::chrono::duration<double>(end - start).count() << " s\n" << std::endl;
+        
     } else if (std::is_same_v<Container, std::deque<Student>>) {
-        start = std::chrono::high_resolution_clock::now();
+        
         std::sort(stud.begin(), stud.end(), rusiuoti);
-        end = std::chrono::high_resolution_clock::now();
-        //std::cout << "Studentų rūšiavimo pagal did. tvarka laikas: " << std::chrono::duration<double>(end - start).count() << " s\n" << std::endl;
+
     }
 
 
-    start = std::chrono::high_resolution_clock::now();
+    auto start = std::chrono::high_resolution_clock::now();
 
     Container blogiStud;
 
@@ -170,19 +163,13 @@ double splitStudent3(Container &stud, const std::string &geri, const std::string
 
     }
 
-    end = std::chrono::high_resolution_clock::now();
-    double duration = std::chrono::duration<double>(end - start).count();
+    auto end = std::chrono::high_resolution_clock::now();
     std::cout << "Studentų skirstymo į dvi grupes laikas: " << std::chrono::duration<double>(end - start).count() << " s\n" << std::endl;
 
     /*if constexpr (std::is_same_v<Container, std::vector<Student>>) {
-        start = std::chrono::high_resolution_clock::now();
         std::sort(stud.begin(), stud.end(), rusiuoti);
         std::sort(blogiStud.begin(), blogiStud.end(), rusiuoti);
-        end = std::chrono::high_resolution_clock::now();
-        std::cout << "Studentų rūšiavimo pagal did. tvarka laikas: " << std::chrono::duration<double>(end - start).count() << " s\n" << std::endl;
     }*/
-
-    return duration;
 }
 
 
