@@ -126,7 +126,7 @@ void splitStudent2(Container &stud, const std::string &geri, const std::string &
 
 
 template<typename Container>
-double splitStudent3(Container &stud, const std::string &geri, const std::string &blogi) {
+void splitStudent3(Container &stud, const std::string &geri, const std::string &blogi) {
 
 
     if constexpr (std::is_same_v<Container, std::list<Student>>) {
