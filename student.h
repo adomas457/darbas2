@@ -19,10 +19,7 @@ public:
     
     Student() : exam(0), mean(0), median(0) { }
 
-    
-    Student(std::istream& is) {
-        readStudent(is);
-    }
+    Student(std::istream& is);
 
     std::string getName() const { return name; }
     std::string getSurname() const { return surname; }
@@ -32,6 +29,8 @@ public:
     const std::vector<int>& getHomework() const { return homework; }
 
     std::istream& readStudent(std::istream& is);
+
+    ~Student() { }
 };
 
 double calculateMean(const std::vector<int>& hm, int exam);

@@ -27,3 +27,29 @@ double calculateMedian(std::vector<int> hm, int exam) {
         return hm[pos] * 0.4 + exam * 0.6;
     }
 }
+
+Student::Student(std::istream& is) {
+    readStudent(is);
+}
+
+
+std::istream& Student::readStudent(std::istream& is) {
+    is >> name >> surname;
+    int grade;
+    homework.clear();
+    while (is >> grade) {
+        homework.push_back(grade);
+    }
+
+    if (!homework.empty()) {
+        exam = homework.back();
+        homework.pop_back();
+    } else {
+        exam = 0;
+    }
+
+    mean = calculateMean(homework, exam);
+    median = calculateMedian(homework, exam);
+
+    return is;
+}
