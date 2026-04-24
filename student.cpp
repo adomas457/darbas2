@@ -6,6 +6,24 @@
 #include <iomanip>
 #include <iostream>
 
+Student::Student(const Student& other) : name(other.name), surname(other.surname), homework(other.homework), exam(other.exam),
+    mean(other.mean), median(other.median) { }
+
+Student& Student::operator=(const Student& other) {
+    if (this == &other) return *this;
+
+    name = other.name;
+    surname = other.surname;
+    homework = other.homework;
+    exam = other.exam;
+    mean = other.mean;
+    median = other.median;
+
+    return *this;
+}
+
+Student::~Student() { }
+
 double calculateMean(const std::vector<int> &hm, int exam) {
     if (hm.empty()) return exam * 0.6;
     double s = 0;
