@@ -1,20 +1,15 @@
-# v1.2
+# v1.5
 
 ## Realizuota:
 
-* Rule of Five: copy cons., copy assign., move cons., move assign., destructor
-* Perkrauti įvedimo, išvedimo operatoriai (>>, <<)
-* Rankinis Rule of Five ir perkrautų operatorių testavimas (pateikta nuotrauka: rankinė įvestis, išvestis į ekraną)
+* Abstrakti klasė Person ir jos derived klasė Student
+* Derived klasė palaiko Rule of Five bei įvesties/išvesties metodus
 
-## Duomenų įvestis
+## Testavimas
 
-* Rankinė įvestis (std::cin)
-* Automatinė įvestis (pvz.: std::stringstream) 
-* Įvestis iš failo (std::ifstream)
+* Programa veikia su v1.2 testavimo logika (pirmoji nuotrauka: rankinė įvestis, išvestis į ekraną)
+* Person klasės objektų kūrimas pademonstruotas (antroji nuotrauka: kūrimas neveikia)
 
-## Duomenų išvestis
+![Testing1](images/image.png)
 
-* Į ekraną (std::cout)
-* Į failą (std::ofstream)
-
-![Testing](images/image.png)
+![Testing2](images/image2.png)
