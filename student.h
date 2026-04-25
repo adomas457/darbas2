@@ -6,10 +6,19 @@
 #include <iostream>
 #include <algorithm>
 
-class Student {
+class Person {
+    protected:
+        std::string name;
+        std::string surname;
+    public:
+        virtual ~Person() = default;
+
+        virtual std::string getName() const = 0;
+        virtual std::string getSurname() const = 0;
+};
+
+class Student : public Person{
 private:
-    std::string name;
-    std::string surname;
     std::vector<int> homework;
     int exam;
     double mean;
@@ -24,10 +33,10 @@ public:
     Student& operator=(const Student& other);
     Student(Student&& other) noexcept;
     Student& operator=(Student&& other) noexcept;
-    ~Student();
+    ~Student() override;
 
-    std::string getName() const { return name; }
-    std::string getSurname() const { return surname; }
+    std::string getName() const override { return name; }
+    std::string getSurname() const override { return surname; }
     int getExam() const { return exam; }
     double getMean() const { return mean; }
     double getMedian() const { return median; }
