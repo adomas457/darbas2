@@ -39,7 +39,9 @@ Student& Student::operator=(Student&& other) noexcept {
 
 }
 
-Student::~Student() { }
+Student::~Student() { 
+    std::cout << "Objektas ištrintas" << std::endl;
+}
 
 double calculateMean(const std::vector<int> &hm, int exam) {
     if (hm.empty()) return exam * 0.6;
@@ -69,10 +71,18 @@ Student::Student(std::istream& is) {
 
 
 std::istream& Student::readStudent(std::istream& is) {
-    is >> name >> surname;
+   
+    std::string line;
+    std::getline(is >> std::ws, line);
+
+    std::stringstream ss(line);
+
+    ss >> name >> surname;
+
     int grade;
     homework.clear();
-    while (is >> grade) {
+
+    while (ss >> grade) {
         homework.push_back(grade);
     }
 
@@ -89,3 +99,18 @@ std::istream& Student::readStudent(std::istream& is) {
     return is;
 }
 
+std::ostream& operator<<(std::ostream& os, const Student& s) {
+    os << std::left << std::setw(10) << s.name << std::left << std::setw(10) << s.surname;
+
+    for (int g : s.homework) {
+        os << std::left << std::setw(5) << g;
+    }
+
+    os << std::left << std::setw(5) << s.exam << std::left << std::setw(7) << s.mean << std::left << std::setw(7) << s.median << '\n';
+
+    return os;
+}
+
+std::istream& operator>>(std::istream& is, Student& s) {
+    return s.readStudent(is);
+}
