@@ -1,6 +1,6 @@
 # v1.2
 
-##### Realizuota:
+## Realizuota:
 
 * Rule of Five: copy cons., copy assign., move cons., move assign., destructor
 * Perkrauti įvedimo, išvedimo operatoriai (>>, <<)
