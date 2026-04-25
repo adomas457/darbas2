@@ -9,11 +9,20 @@
 #include "utils.h"
 #include <deque>
 #include <list>
+#include <sstream>
 
 int main() {
+
+
+    //std::stringstream ss("Jonas Jonaitis 10 9 8 7");
+    //std::ifstream fin("studentai1000.txt");
     
     // input >>
     Student a;
+
+    // ss >> a;
+    //fin >> a;
+
     std::cout << "Įveskite studentą (vardas, pavardė, ND pažymiai, egz.): ";
     std::cin >> a;
 
@@ -29,10 +38,18 @@ int main() {
 
 
     // output <<
+    
+    /*std::ofstream fout("data.txt");
+    
+    fout << d << std::endl;
+    fout << e << std::endl;
+    fout << c << std::endl;*/
+    
+
     std::cout << "d: " << d << std::endl;
     std::cout << "e: " << e << std::endl;
     std::cout << "c: " << c << std::endl;
-
+    
 
 
 

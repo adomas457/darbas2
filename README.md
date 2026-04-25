@@ -1,15 +1,20 @@
-# v1.1 
+# v1.2
 
-##### Sistemos parametrai:
+##### Realizuota:
 
-* CPU: AMD Ryzen 5 5500U
-* RAM: 16GB
-* SSD: SAMSUNG 256 GB
+* Rule of Five: copy cons., copy assign., move cons., move assign., destructor
+* Perkrauti įvedimo, išvedimo operatoriai (>>, <<)
+* Rankinis Rule of Five ir perkrautų operatorių testavimas (pateikta nuotrauka: rankinė įvestis, išvestis į ekraną)
 
-##### Testavimo rezultatai:
+## Duomenų įvestis
 
-* Testavimas (vector, 100000 ir 1000000 įrašų sk., visi opt. flag) atliktas 3 kartus (rodomi vidurkiai)
-* Kiekvienam testavimo atvejui naudojami tie patys .txt failai
-* Lentelėje laikai rodomi sekundėmis
+* Rankinė įvestis (std::cin)
+* Automatinė įvestis (pvz.: std::stringstream) 
+* Įvestis iš failo (std::ifstream)
 
-![Excel](images/image.png)
+## Duomenų išvestis
+
+* Į ekraną (std::cout)
+* Į failą (std::ofstream)
+
+![Testing](images/image.png)
