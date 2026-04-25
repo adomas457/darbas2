@@ -22,6 +22,8 @@ public:
 
     Student(const Student& other);
     Student& operator=(const Student& other);
+    Student(Student&& other) noexcept;
+    Student& operator=(Student&& other) noexcept;
     ~Student();
 
     std::string getName() const { return name; }
@@ -32,6 +34,9 @@ public:
     const std::vector<int>& getHomework() const { return homework; }
 
     std::istream& readStudent(std::istream& is);
+
+    friend std::ostream& operator<<(std::ostream& os, const Student& s);
+    friend std::istream& operator>>(std::istream& is, Student &s);
 
 };
 

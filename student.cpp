@@ -22,6 +22,23 @@ Student& Student::operator=(const Student& other) {
     return *this;
 }
 
+Student::Student(Student&& other) noexcept : name(std::move(other.name)), surname(std::move(other.surname)), homework(std::move(other.homework)),
+      exam(other.exam), mean(other.mean), median(other.median) { }
+
+Student& Student::operator=(Student&& other) noexcept {
+    if (this == &other) return *this;
+
+    name = std::move(other.name);
+    surname = std::move(other.surname);
+    homework = std::move(other.homework);
+    exam = other.exam;
+    mean = other.mean;
+    median = other.median;
+
+    return *this;
+
+}
+
 Student::~Student() { }
 
 double calculateMean(const std::vector<int> &hm, int exam) {
@@ -71,3 +88,4 @@ std::istream& Student::readStudent(std::istream& is) {
 
     return is;
 }
+
