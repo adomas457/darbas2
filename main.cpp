@@ -11,7 +11,32 @@
 #include <list>
 
 int main() {
-    using Container = std::vector<Student>;
+    
+    // input >>
+    Student a;
+    std::cout << "Įveskite studentą (vardas, pavardė, ND pažymiai, egz.): ";
+    std::cin >> a;
+
+    // copy
+    Student b = a; // constructor
+    Student c;
+    c = a; // assignment
+
+    // move
+    Student d = std::move(a); // constructor
+    Student e;
+    e = std::move(b); // assignment
+
+
+    // output <<
+    std::cout << "d: " << d << std::endl;
+    std::cout << "e: " << e << std::endl;
+    std::cout << "c: " << c << std::endl;
+
+
+
+
+    /*using Container = std::vector<Student>;
     //using Container = std::deque<Student>;
     //using Container = std::list<Student>;
 
@@ -60,7 +85,7 @@ int main() {
         }
 
         std::cout << std::string(100, '-') << std::endl;
-    }
+    }*/
 
     return 0;
 }
