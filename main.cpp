@@ -13,10 +13,11 @@
 
 int main() {
 
+    // abstract test
+    //Person p;
 
     //std::stringstream ss("Jonas Jonaitis 10 9 8 7");
     //std::ifstream fin("studentai1000.txt");
-    
     // input >>
     Student a;
 
@@ -50,7 +51,7 @@ int main() {
     std::cout << "e: " << e << std::endl;
     std::cout << "c: " << c << std::endl;
     
-
+    
 
 
     /*using Container = std::vector<Student>;
