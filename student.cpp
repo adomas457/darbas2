@@ -2,12 +2,14 @@
 #include <algorithm>
 #include <fstream>
 #include <sstream>
-#include <algorithm>
 #include <iomanip>
 #include <iostream>
 
-Student::Student(const Student& other) : name(other.name), surname(other.surname), homework(other.homework), exam(other.exam),
-    mean(other.mean), median(other.median) { }
+Student::Student(const Student& other) : homework(other.homework), exam(other.exam),
+    mean(other.mean), median(other.median) { 
+        name = other.name;
+        surname = other.surname;
+    }
 
 Student& Student::operator=(const Student& other) {
     if (this == &other) return *this;
@@ -22,8 +24,11 @@ Student& Student::operator=(const Student& other) {
     return *this;
 }
 
-Student::Student(Student&& other) noexcept : name(std::move(other.name)), surname(std::move(other.surname)), homework(std::move(other.homework)),
-      exam(other.exam), mean(other.mean), median(other.median) { }
+Student::Student(Student&& other) noexcept : homework(std::move(other.homework)),
+      exam(other.exam), mean(other.mean), median(other.median) {
+        name = std::move(other.name);
+        surname = std::move(other.surname);
+       }
 
 Student& Student::operator=(Student&& other) noexcept {
     if (this == &other) return *this;
